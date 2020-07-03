@@ -23,8 +23,10 @@ describe('routes/api.ts', () => {
 
         it('returns json with request id', (done) => {
             request(app)
-                .get('/42')
+                .get('/my-best-post')
                 .expect('content-type', /json/)
+                .expect(/test 2/)
+                .expect(/Test 2 Content/)
                 .expect(200, done);
         });
     });

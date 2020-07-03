@@ -23,8 +23,9 @@ describe('routes/web.ts', () => {
 
         it('returns html with request id', (done) => {
             request(app)
-                .get('/42')
+                .get('/my-best-post')
                 .expect('content-type', /html/)
+                .expect(/Test 2 Content/)
                 .expect(200, done);
         });
     });

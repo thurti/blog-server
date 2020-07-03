@@ -26,7 +26,9 @@ export default class Posts {
      */
     async getBySlug(slug: string): Promise<object> {
         const posts = await this.reader.getPosts();
-        return posts.find(post => post.slug === slug && post.published);
+        const post = posts.find(post => post.slug === slug && post.published);
+
+        return (post) ? post : Promise.reject(new Error('404'));
     }
 
 }

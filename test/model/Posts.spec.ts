@@ -50,8 +50,11 @@ describe('model/Posts.ts', () => {
         });
     
         it('does not return unpublished post', async () => {
-            const post = await posts.getBySlug('not-published');
-            assert.equal(post, undefined);
+            assert.rejects(posts.getBySlug('not-published'));
+        });
+
+        it('returns error if not found', async () => {
+            assert.rejects(posts.getBySlug('asd'));
         });
     });
 });

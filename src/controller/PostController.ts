@@ -32,7 +32,7 @@ export async function getSinglePost(req: Request, res: Response): Promise<Respon
     try {
         return res.json(await posts.getBySlug(req.params.slug));
     } catch (error) {
-        return res.status(500)
+        return res.status(404)
                   .json({error: "can't read single post"});
     }
 }
@@ -66,7 +66,7 @@ export async function getSinglePostHtml(req: Request, res: Response): Promise<Re
         const html = await renderSinglePost(post_single);
         return res.send(html);
     } catch (error) {
-        return res.status(500)
+        return res.status(404)
                   .send("errrrrrrrro");
     }
 }
