@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { request, Request, Response } from "express";
 import config from '../config';
 import PostDirReader from "../lib/PostDirReader";
 import Posts from "../model/Posts";
@@ -16,6 +16,21 @@ const posts = new Posts(reader);
 export async function getPosts(req: Request, res: Response): Promise<Response> {
     try {
         return res.json(await posts.all());
+    } catch(error) {
+        return res.status(500)
+                  .json({error: "can't read posts"});
+    }
+}
+
+/**
+ * Returns array of posts meta data for given tag.
+ * @param req 
+ * @param res 
+ * @returns Promise
+ */
+export async function getPostsByTag(req: Request, res: Response): Promise<Response> {
+    try {
+        return res.json(await posts.getByTag(req.params.tag));
     } catch(error) {
         return res.status(500)
                   .json({error: "can't read posts"});

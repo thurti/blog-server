@@ -30,4 +30,14 @@ describe('routes/api.ts', () => {
                 .expect(200, done);
         });
     });
+
+    describe('GET /:tag', () => {
+
+        it('returns json', (done) => {
+            request(app)
+                .get('/tag/js')
+                .expect('content-type', /json/)
+                .expect(200, done);
+        });
+    });
 });
