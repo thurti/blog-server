@@ -17,8 +17,10 @@ ORIGIN="http://localhost:3000" //Access-Control-Allow-Origin header
 3) JSON API
     - `http://localhost:3000/api/posts`
     - `http://localhost:3000/api/posts/[slug]`
+    - `http://localhost:3000/api/posts/tag/[tag]`
 4) HTML Fallback
     - `http://localhost:3000/`
+    - `http://localhost:3000/tag/[tag]`
     - `http://localhost:3000/[slug]`
 
 ## Markdown File with Frontmatter
@@ -29,6 +31,7 @@ Markdown files should have the following attributes in frontmatter. More attribu
 ---
 title: 'My First Blog Post'
 slug: 'my-first-post'
+tags: ['js', 'css]
 created_at: '2019-01-01'
 published: true
 ---
