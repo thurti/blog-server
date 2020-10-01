@@ -10,6 +10,7 @@ This is a simple node.js blog backend. The app reads markdown files from a direc
 PORT=5678
 POSTS="/path/to/markdown/files"
 STATIC="/path/to/static/files" //eg. images used in markdown files
+TEMPLATES="/path/to/src/templates" //absolute path to html fallback template files
 ORIGIN="http://localhost:3000" //Access-Control-Allow-Origin header
 ```
 

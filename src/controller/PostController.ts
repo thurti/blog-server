@@ -64,6 +64,7 @@ export async function getPostsHtml(req: Request, res: Response): Promise<Respons
         const html = await renderPostList(posts_array);
         return res.send(html);
     } catch(error) {
+        console.log(error);
         return res.status(500)
                   .send("errrrrrrrro");
     }
