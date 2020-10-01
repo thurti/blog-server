@@ -31,4 +31,14 @@ export default class Posts {
         return (post) ? post : Promise.reject(new Error('404'));
     }
 
+    /**
+     * Returns published posts with given tag.
+     * @param tag string
+     * @returns Promise<Array<any>>
+     */
+    async getByTag(tag: string): Promise<Array<any>>  {
+        const posts = await this.all();
+        return posts.filter(post => post.published && post.tags && post.tags.includes(tag));
+    }
+
 }

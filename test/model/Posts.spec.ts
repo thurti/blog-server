@@ -57,4 +57,20 @@ describe('model/Posts.ts', () => {
             assert.rejects(posts.getBySlug('asd'));
         });
     });
+
+    describe('Posts.getByTag', () => {
+        
+        it('returns posts with given tag', async () => {
+            const all = await posts.getByTag('js');
+            assert.strictEqual(all.length, 2);
+            assert.strictEqual(all[0].title, 'test 2');
+            assert.strictEqual(all[1].title, 'test 1');
+        });
+
+        it('only returns published posts', async () => {
+            const all = await posts.getByTag('brightsign');
+            assert.strictEqual(all.length, 1);
+            assert.strictEqual(all[0].title, 'test 2');
+        });
+    });
 });
