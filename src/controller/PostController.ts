@@ -70,6 +70,23 @@ export async function getPostsHtml(req: Request, res: Response): Promise<Respons
 }
 
 /**
+ * Returns listing of posts by tag as HTML.
+ * @param req 
+ * @param res 
+ * @returns Promise
+ */
+export async function getPostsByTagHtml(req: Request, res: Response): Promise<Response> {
+    try {
+        const posts_array = await posts.getByTag(req.params.tag);
+        const html = await renderPostList(posts_array);
+        return res.send(html);
+    } catch(error) {
+        return res.status(500)
+                  .send("errrrrrrrro");
+    }
+}
+
+/**
  * Returns single post content as HTML.
  * @param req 
  * @param res 
