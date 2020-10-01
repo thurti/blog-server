@@ -19,9 +19,9 @@ describe('routes/api.ts', () => {
         });
     });
 
-    describe('GET /:id', () => {
+    describe('GET /:slug', () => {
 
-        it('returns json with request id', (done) => {
+        it('returns json with request slug', (done) => {
             request(app)
                 .get('/my-best-post')
                 .expect('content-type', /json/)
