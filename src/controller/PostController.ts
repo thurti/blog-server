@@ -33,7 +33,7 @@ export async function getSinglePost(req: Request, res: Response): Promise<Respon
         return res.json(await posts.getBySlug(req.params.slug));
     } catch (error) {
         return res.status(404)
-                  .json({error: "can't read single post"});
+                  .json({error: "404 - page not found"});
     }
 }
 
