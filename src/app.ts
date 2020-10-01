@@ -7,7 +7,9 @@ const app = express();
 
 //helmet middleware sets some security headers
 const helmet = require('helmet');
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false,
+}));
 
 //set cors header
 app.use(function(req, res, next) {
