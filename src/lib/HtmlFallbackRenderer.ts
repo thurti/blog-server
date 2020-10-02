@@ -26,7 +26,7 @@ export async function renderPostList(posts: Array<any>): Promise<string> {
     content += template_item.replace(/#title#/, p.title.replace(/<br>/, ''))
                             .replace(/#created_at#/, p.created_at)
                             .replace(/#teaser#/, marked(p.teaser))
-                            .replace(/#link#/, p.slug);
+                            .replace(/#link#/, `90s/${p.slug}`);
   });
 
   return template_list.replace(/#content#/, content);
