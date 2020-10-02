@@ -18,7 +18,7 @@ export async function getPosts(req: Request, res: Response): Promise<Response> {
         return res.json(await posts.all());
     } catch(error) {
         return res.status(500)
-                  .json({error: "can't read posts"});
+                  .json({error: "500 - can't read posts"});
     }
 }
 
@@ -33,7 +33,7 @@ export async function getPostsByTag(req: Request, res: Response): Promise<Respon
         return res.json(await posts.getByTag(req.params.tag));
     } catch(error) {
         return res.status(500)
-                  .json({error: "can't read posts"});
+                  .json({error: "500 - can't read posts"});
     }
 }
 
@@ -65,7 +65,7 @@ export async function getPostsHtml(req: Request, res: Response): Promise<Respons
         return res.send(html);
     } catch(error) {
         return res.status(500)
-                  .send("errrrrrrrro");
+                  .send("errrrrrrrro - 500 server says no");
     }
 }
 
@@ -82,7 +82,7 @@ export async function getPostsByTagHtml(req: Request, res: Response): Promise<Re
         return res.send(html);
     } catch(error) {
         return res.status(500)
-                  .send("errrrrrrrro");
+                  .send("errrrrrrrro - 500 server says no");
     }
 }
 
@@ -99,6 +99,6 @@ export async function getSinglePostHtml(req: Request, res: Response): Promise<Re
         return res.send(html);
     } catch (error) {
         return res.status(404)
-                  .send("errrrrrrrro");
+                  .send("errrrrrrrro - 404 page not found");
     }
 }
