@@ -5,36 +5,36 @@ import request from 'supertest';
 import webRoutes from '../../src/routes/web';
 
 const app = express();
-app.use('/', webRoutes);
+app.use('/90s', webRoutes);
 
 describe('routes/web.ts', () => {
 
-    describe('GET /', () => {
+    describe('GET /90s', () => {
 
         it('returns html', (done) => {
             request(app)
-                .get('/')
+                .get('/90s/')
                 .expect('content-type', /html/)
                 .expect(200, done);
         });
     });
 
-    describe('GET /:slug', () => {
+    describe('GET /90s/:slug', () => {
 
         it('returns html with request slug', (done) => {
             request(app)
-                .get('/my-best-post')
+                .get('/90s/my-best-post')
                 .expect('content-type', /html/)
                 .expect(/Test 2 Content/)
                 .expect(200, done);
         });
     });
 
-    describe('GET /tag/:tag', () => {
+    describe('GET /90s/tag/:tag', () => {
 
         it('returns html', (done) => {
             request(app)
-                .get('/tag/js')
+                .get('/90s/tag/js')
                 .expect('content-type', /html/)
                 .expect(200, done);
         });

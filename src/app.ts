@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
 //add routes
 app.use('/static', express.static(config.STATIC));
 app.use('/api/posts', apiRoutes);
-app.use('/', webRoutes);
+app.use('/90s', webRoutes);
 
 //listen on port
 app.listen(config.PORT);
