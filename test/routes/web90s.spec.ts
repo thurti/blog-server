@@ -2,7 +2,7 @@ process.env.POSTS = `${__dirname}/../fixtures/testfiles`;
 
 import express from 'express';
 import request from 'supertest';
-import webRoutes from '../../src/routes/web';
+import webRoutes from '../../src/routes/web90s';
 
 const app = express();
 app.use('/90s', webRoutes);
