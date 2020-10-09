@@ -20,9 +20,9 @@ ORIGIN="http://localhost:3000" //Access-Control-Allow-Origin header
     - `http://localhost:3000/api/posts/[slug]`
     - `http://localhost:3000/api/posts/tag/[tag]`
 4) HTML Fallback
-    - `http://localhost:3000/`
-    - `http://localhost:3000/tag/[tag]`
-    - `http://localhost:3000/[slug]`
+    - `http://localhost:3000/90s/`
+    - `http://localhost:3000/90s/tag/[tag]`
+    - `http://localhost:3000/90s/[slug]`
 
 ## Markdown File with Frontmatter
 Markdown files should have the following attributes in frontmatter. More attributes can be added.
