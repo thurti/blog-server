@@ -34,7 +34,10 @@ export default class PostDirReader {
         this.posts = [];
 
         this.onDirUpdate = this.onDirUpdate.bind(this);
-        this.watcher = chokidar.watch(this.dir.toString()).on('change', this.onDirUpdate);
+        this.watcher = chokidar.watch(this.dir.toString())
+                                .on('add', this.onDirUpdate)
+                                .on('change', this.onDirUpdate)
+                                .on('unlink', this.onDirUpdate);
     }
     
     destroy() {
