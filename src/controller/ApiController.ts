@@ -1,4 +1,4 @@
-import { request, Request, Response } from "express";
+import { Request, Response } from "express";
 import config from '../config';
 import PostDirReader from "../lib/PostDirReader";
 import Posts from "../model/Posts";
