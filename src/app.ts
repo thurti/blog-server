@@ -8,7 +8,6 @@ import web90sRoutes from './routes/web90s';
 const app = express();
 
 //helmet middleware sets some security headers
-const helmet = require('helmet');
 app.use(helmet({
   contentSecurityPolicy: false,
 }));
@@ -21,10 +20,9 @@ app.use(function(req: Request, res: Response, next) {
 });
 
 //add routes
-app.use('/static', express.static(config.STATIC));
 app.use('/api/posts', apiRoutes);
 app.use('/90s', web90sRoutes);
-app.get('/:slug', ssrRoutes);
+app.use('/', ssrRoutes);
 
 //listen on port
 app.listen(config.PORT);
