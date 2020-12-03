@@ -40,5 +40,13 @@ describe('routes/api.ts', () => {
                 .expect(/test 1/)
                 .expect(200, done);
         });
+
+        it('allows encoded uri, eg. whitespace', (done) => {
+            const tag = encodeURIComponent('nodes.js hello');
+            request(app)
+                .get('/tag/' + tag)
+                .expect('content-type', /json/)
+                .expect(200, done);
+        });
     });
 });

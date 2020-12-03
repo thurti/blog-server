@@ -29,7 +29,7 @@ export async function getPosts(req: Request, res: Response): Promise<Response> {
  */
 export async function getPostsByTag(req: Request, res: Response): Promise<Response> {
     try {
-        return res.json(await posts.getByTag(req.params.tag));
+        return res.json(await posts.getByTag(decodeURI(req.params.tag)));
     } catch(error) {
         return res.status(500)
                   .json({error: "500 - can't read posts"});
