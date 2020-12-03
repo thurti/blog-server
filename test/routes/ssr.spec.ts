@@ -2,29 +2,41 @@ process.env.POSTS = `${__dirname}/../fixtures/testfiles`;
 
 import express from 'express';
 import request from 'supertest';
-import apiRoutes from '../../src/routes/api';
-
+import ssrRoutes from '../../src/routes/ssr';
 const app = express();
-app.use('/', apiRoutes);
+app.use('/', ssrRoutes);
 
-describe('routes/api.ts', () => {
+describe('routes/ssr.ts', () => {
 
     describe('GET /', () => {
 
         it('returns json', (done) => {
             request(app)
                 .get('/')
-                .expect('content-type', /json/)
+                .expect('content-type', /html/)
+                .expect(/test 1/)
+                .expect(/test 2/)
+                .expect(200, done);
+        });
+    });
+
+    describe('GET /about', () => {
+
+        it('returns html page "About"', (done) => {
+            request(app)
+                .get('/about')
+                .expect('content-type', /html/)
+                .expect(/Thomas/)
                 .expect(200, done);
         });
     });
 
     describe('GET /:slug', () => {
 
-        it('returns json with request slug', (done) => {
+        it('returns html for requested slug', (done) => {
             request(app)
                 .get('/my-best-post')
-                .expect('content-type', /json/)
+                .expect('content-type', /html/)
                 .expect(/test 2/)
                 .expect(/Test 2 Content/)
                 .expect(200, done);
@@ -33,10 +45,10 @@ describe('routes/api.ts', () => {
 
     describe('GET /tag/:tag', () => {
 
-        it('returns json', (done) => {
+        it('returns html list for requested tag', (done) => {
             request(app)
                 .get('/tag/css')
-                .expect('content-type', /json/)
+                .expect('content-type', /html/)
                 .expect(/test 1/)
                 .expect(200, done);
         });
