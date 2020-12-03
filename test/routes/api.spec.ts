@@ -31,12 +31,13 @@ describe('routes/api.ts', () => {
         });
     });
 
-    describe('GET /:tag', () => {
+    describe('GET /tag/:tag', () => {
 
         it('returns json', (done) => {
             request(app)
-                .get('/tag/js')
+                .get('/tag/css')
                 .expect('content-type', /json/)
+                .expect(/test 1/)
                 .expect(200, done);
         });
     });
