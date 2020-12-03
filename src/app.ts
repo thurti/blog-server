@@ -1,4 +1,5 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
+import helmet from 'helmet';
 import config from './config';
 import apiRoutes from './routes/api';
 import ssrRoutes from './routes/ssr';
@@ -13,7 +14,7 @@ app.use(helmet({
 }));
 
 //set cors header
-app.use(function(req, res, next) {
+app.use(function(req: Request, res: Response, next) {
   res.header("Access-Control-Allow-Origin", config.ORIGIN);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
