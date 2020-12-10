@@ -39,7 +39,10 @@ export async function getSinglePost(req: Request, res: Response): Promise<Respon
     const html = svelteRenderer.render('Single', req.params, post);
     return res.send(html);
   } catch (error) {
-    return res.status(500).send(error.message);
+    const html = svelteRenderer.render('NotFound', req.params, {
+      error: error
+    });
+    return res.status(404).send(html);
   }
 }
 

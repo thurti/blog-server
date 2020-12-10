@@ -41,6 +41,13 @@ describe('routes/ssr.ts', () => {
                 .expect(/Test 2 Content/)
                 .expect(200, done);
         });
+
+        it('returns 404 if no post found', (done) => {
+            request(app)
+                .get('/asd')
+                .expect('content-type', /html/)
+                .expect(404, done);
+        });
     });
 
     describe('GET /tag/:tag', () => {
