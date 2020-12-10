@@ -38,7 +38,6 @@ export default class Posts {
      */
     async getByTag(tag: string): Promise<Array<any>>  {
         const posts = await this.all();
-        console.log(tag);
         return posts.filter(post => post.published && post.tags && post.tags.includes(tag));
     }
 
