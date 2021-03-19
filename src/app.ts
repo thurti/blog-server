@@ -3,7 +3,6 @@ import helmet from 'helmet';
 import config from './config';
 import apiRoutes from './routes/api';
 import ssrRoutes from './routes/ssr';
-import web90sRoutes from './routes/web90s';
 
 const app = express();
 
@@ -21,7 +20,6 @@ app.use(function(req: Request, res: Response, next) {
 
 //add routes
 app.use('/api/posts', apiRoutes);
-app.use('/90s', web90sRoutes);
 app.use('/', ssrRoutes);
 
 //listen on port
