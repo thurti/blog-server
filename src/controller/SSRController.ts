@@ -33,6 +33,16 @@ export async function getAbout(req: Request, res: Response): Promise<Response> {
   }
 }
 
+export async function getPostList(req: Request, res: Response): Promise<Response> {
+  try {
+    const post = await posts.getByTag('article');
+    const html = svelteRenderer.render('PostList', req.params, post);
+    return res.send(html);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
 export async function getPostSingle(req: Request, res: Response): Promise<Response> {
   try {
     const post = await posts.getBySlug(req.params.slug);
