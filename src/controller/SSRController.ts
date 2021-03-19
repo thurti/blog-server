@@ -14,7 +14,7 @@ const App = require(path.resolve(config.FRONTEND_APP));
 const svelteRenderer = new SvelteRenderer(App, frontend_index);
 
 
-export async function getIndex(req: Request, res: Response): Promise<Response> {
+export async function getHome(req: Request, res: Response): Promise<Response> {
   try {
     const post = await posts.getByTag('home');
     const html = svelteRenderer.render('Home', req.params, post);
@@ -33,7 +33,7 @@ export async function getAbout(req: Request, res: Response): Promise<Response> {
   }
 }
 
-export async function getSinglePost(req: Request, res: Response): Promise<Response> {
+export async function getPostSingle(req: Request, res: Response): Promise<Response> {
   try {
     const post = await posts.getBySlug(req.params.slug);
     const html = svelteRenderer.render('PostSingle', req.params, post);
