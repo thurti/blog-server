@@ -31,11 +31,11 @@ describe('routes/ssr.ts', () => {
         });
     });
 
-    describe('GET /:slug', () => {
+    describe('GET /articles/:slug', () => {
 
-        it('returns html for requested slug', (done) => {
+        it('returns html for requested article', (done) => {
             request(app)
-                .get('/my-best-post')
+                .get('/articles/my-best-post')
                 .expect('content-type', /html/)
                 .expect(/test 2/)
                 .expect(/Test 2 Content/)
