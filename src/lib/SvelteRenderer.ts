@@ -40,8 +40,8 @@ export default class SvelteRenderer {
    * @param content Content to render in view.
    * @returns string
    */
-  render(view: string, params: object, content: object): string {
-    const result = this.renderView(view, params, content);
+  render(view: string, params: object, content?: object): string {
+    const result = this.renderView(view, params, content ?? {});
     return this.replaceHtmlPlaceholder(result);
   }
 
