@@ -62,6 +62,36 @@ describe('routes/ssr.ts', () => {
         });
     });
 
+    describe('GET /portfolio', () => {
+
+        it('returns html list with portfolio', (done) => {
+            request(app)
+                .get('/portfolio')
+                .expect('content-type', /html/)
+                .expect(/test 2/)
+                .expect(200, done);
+        });
+    });
+
+    describe('GET /portfolio/:slug', () => {
+
+        it('returns html for requested portfolio', (done) => {
+            request(app)
+                .get('/portfolio/my-best-post')
+                .expect('content-type', /html/)
+                .expect(/test 2/)
+                .expect(/Test 2 Content/)
+                .expect(200, done);
+        });
+
+        it('returns 404 if no post found', (done) => {
+            request(app)
+                .get('/portfolio/asd')
+                .expect('content-type', /html/)
+                .expect(404, done);
+        });
+    });
+
     describe('GET /tag/:tag', () => {
 
         it('returns html list for requested tag', (done) => {
