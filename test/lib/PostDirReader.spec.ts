@@ -20,7 +20,7 @@ describe('lib/PostDirReader', () => {
 
     it('#readDir() reads files from directory', async () => {
         const files = await postReader.readDir();
-        assert.equal(files.length, 4);
+        assert.equal(files.length, 5);
         assert(files[0] instanceof fs.Dirent);
     });
 
@@ -31,7 +31,7 @@ describe('lib/PostDirReader', () => {
 
     it('#getPosts() returns array of posts objects', async () => {
         const posts = await postReader.getPosts();
-        assert.equal(posts.length, 3);
+        assert.equal(posts.length, 4);
         assert.equal(posts[1].title, 'test 2');
     });
 

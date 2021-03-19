@@ -31,6 +31,18 @@ describe('routes/ssr.ts', () => {
         });
     });
 
+    describe('GET /articles', () => {
+
+        it('returns html list with articles', (done) => {
+            request(app)
+                .get('/articles')
+                .expect('content-type', /html/)
+                .expect(/test 1/)
+                .expect(/test 4/)
+                .expect(200, done);
+        });
+    });
+
     describe('GET /articles/:slug', () => {
 
         it('returns html for requested article', (done) => {
@@ -44,7 +56,7 @@ describe('routes/ssr.ts', () => {
 
         it('returns 404 if no post found', (done) => {
             request(app)
-                .get('/asd')
+                .get('/articles/asd')
                 .expect('content-type', /html/)
                 .expect(404, done);
         });
