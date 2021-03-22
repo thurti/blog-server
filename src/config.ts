@@ -1,5 +1,6 @@
 const config: {
     PORT: number,
+    HOST: string,
     POSTS: string,
     ORIGIN: string,
     STATIC: string,
@@ -9,6 +10,7 @@ const config: {
     BROWSERS: any
   } = {
     PORT: parseInt(process.env.PORT as string) || 3000,
+    HOST: process.env.HOST || '0.0.0.0',
     POSTS: process.env.POSTS || `${__dirname}/posts`,
     ORIGIN: process.env.ORIGIN || "http://localhost",
     STATIC: process.env.STATIC || `${__dirname}/static`,

@@ -30,6 +30,6 @@ app.use('/api/posts', apiRoutes);
 app.use('/', ssrRoutes);
 
 //listen on port
-app.listen(config.PORT);
+app.listen(config.PORT, config.HOST);
 
 export default app;
