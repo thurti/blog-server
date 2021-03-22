@@ -31,6 +31,10 @@ export default class SvelteRenderer {
     this.html = html_template;
   }
 
+  setHtmlTemplate(html_template: string): void {
+    this.html = html_template;
+  }
+
   /**
    * Renders svelte view and returns HTML.
    * Parameters are passed to svelte view.

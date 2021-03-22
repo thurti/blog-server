@@ -28,6 +28,12 @@ describe('SvelteRenderer', () => {
     assert.strictEqual(renderer.html, index_file);
   });
 
+  it('#setHtmlTemplate() sets html template string', () => {
+    renderer.setHtmlTemplate('my template');
+    assert.strictEqual(renderer.html, 'my template');
+    renderer.setHtmlTemplate(index_file);
+  });
+
   it('#renderView() calls app.render function with props', () => {
     renderer.renderView('myview', {slug: 'test'}, {title: 'test'});
 
