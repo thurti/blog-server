@@ -4,12 +4,12 @@ import * as SSRController from "../controller/SSRController";
 
 const ssrRoutes = express.Router();
 
-ssrRoutes.get("/about", (req, res) =>
-  SSRController.getStaticView(req, res, { view: "About" })
+ssrRoutes.get("/", (req, res) =>
+  SSRController.getList(req, res, { view: "Home", tag: "home" })
 );
 
-ssrRoutes.get("/articles/:slug([\\w-]{1,100})", (req, res) =>
-  SSRController.getSingle(req, res, { view: "PostSingle" })
+ssrRoutes.get("/about", (req, res) =>
+  SSRController.getStaticView(req, res, { view: "About" })
 );
 
 ssrRoutes.get("/articles", (req, res) =>
@@ -20,8 +20,8 @@ ssrRoutes.get("/articles", (req, res) =>
   })
 );
 
-ssrRoutes.get("/portfolio/:slug([\\w-]{1,100})", (req, res) =>
-  SSRController.getSingle(req, res, { view: "PortfolioSingle" })
+ssrRoutes.get("/articles/:slug([\\w-]{1,100})", (req, res) =>
+  SSRController.getSingle(req, res, { view: "PostSingle" })
 );
 
 ssrRoutes.get("/portfolio", (req, res) =>
@@ -32,12 +32,12 @@ ssrRoutes.get("/portfolio", (req, res) =>
   })
 );
 
+ssrRoutes.get("/portfolio/:slug([\\w-]{1,100})", (req, res) =>
+  SSRController.getSingle(req, res, { view: "PortfolioSingle" })
+);
+
 ssrRoutes.get("/tag/:tag([\\w-]{1,100})", SSRController.getPostsByTag);
 ssrRoutes.use("/static", express.static(config.STATIC, { index: false }));
-
-ssrRoutes.get("/", (req, res) =>
-  SSRController.getList(req, res, { view: "Home", tag: "home" })
-);
 
 ssrRoutes.get("/*", SSRController.notFound);
 
