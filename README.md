@@ -10,7 +10,6 @@ This is a simple node.js blog backend. The app reads markdown files from a direc
 PORT=5678
 POSTS="/path/to/markdown/files"
 STATIC="/path/to/static/files" //eg. images used in markdown files
-TEMPLATES="/path/to/src/templates" //absolute path to html fallback template files
 ORIGIN="http://localhost:3000" //Access-Control-Allow-Origin header
 ```
 
@@ -19,10 +18,12 @@ ORIGIN="http://localhost:3000" //Access-Control-Allow-Origin header
     - `http://localhost:3000/api/posts`
     - `http://localhost:3000/api/posts/[slug]`
     - `http://localhost:3000/api/posts/tag/[tag]`
-4) HTML Fallback
-    - `http://localhost:3000/90s/`
-    - `http://localhost:3000/90s/tag/[tag]`
-    - `http://localhost:3000/90s/[slug]`
+4) SSR
+    - `http://localhost:3000/`
+    - `http://localhost:3000/tag/[tag]`
+    - `http://localhost:3000/articles/[slug]`
+    - `http://localhost:3000/portfolio/[slug]`
+    - `http://localhost:3000/about`
 
 ## Markdown File with Frontmatter
 Markdown files should have the following attributes in frontmatter. More attributes can be added.
