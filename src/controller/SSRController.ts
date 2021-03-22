@@ -100,3 +100,16 @@ export async function getPostsByTag(req: Request, res: Response): Promise<Respon
     return res.status(500).send(error.message);
   }
 }
+
+export function notFound(req:Request, res: Response): any {
+  try {
+    throw new Error('404 - Page Not Found');
+  } catch (error) {
+    const html_template = getHtmlTemplateForBrowser(res.locals.browser);
+    svelteRenderer.setHtmlTemplate(html_template);
+    const html = svelteRenderer.render('NotFound', req.params, {
+      error: error
+    });
+    return res.status(404).send(html);
+  }
+}

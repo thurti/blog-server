@@ -28,7 +28,7 @@ export default class Posts {
         const posts = await this.reader.getPosts();
         const post = posts.find(post => post.slug === slug && post.published);
 
-        return (post) ? post : Promise.reject(new Error('404'));
+        return (post) ? post : Promise.reject(new Error('404 - Page Not Found'));
     }
 
     /**

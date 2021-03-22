@@ -39,4 +39,6 @@ ssrRoutes.get("/portfolio/:slug([\\w-]{1,100})", (req, res) =>
 ssrRoutes.get("/tag/:tag([\\w-]{1,100})", SSRController.getPostsByTag);
 ssrRoutes.use("/static", express.static(config.STATIC, { index: false }));
 
+ssrRoutes.get("/*", SSRController.notFound);
+
 export default ssrRoutes;

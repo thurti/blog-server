@@ -102,4 +102,15 @@ describe('routes/ssr.ts', () => {
                 .expect(200, done);
         });
     });
+
+    describe('GET /asd', () => {
+
+        it('returns 404 Not Found', (done) => {
+            request(app)
+                .get('/asd')
+                .expect('content-type', /html/)
+                .expect(/404 - Page Not Found/)
+                .expect(404, done);
+        });
+    });
 });
