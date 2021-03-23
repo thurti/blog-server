@@ -1,6 +1,6 @@
 {
   "name": "blog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Flat file markdown blog.",
   "main": "build/app.js",
   "scripts": {
